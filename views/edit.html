@@ -1,0 +1,29 @@
+{% extends "layouts/main.html" %}
+
+{% block title %}Tasks{% endblock %}
+
+{% block body %}
+
+  <form id="store" name="store" class="form-inline" method="POST" action="/task/update/{{ task.id }}">
+    <div class="form-group">
+      <label class="sr-only" for="author_name">Имя пользователя</label>
+      <input type="text" name="author_name" class="form-control" placeholder="Имя пользователя" value="{{ task.author_name }}" disabled>
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="email">Email</label>
+      <input type="text" name="email" class="form-control" placeholder="Email" value="{{ task.email }}" disabled>
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="description">Текст задачи</label>
+      <input type="text" name="description" class="form-control" placeholder="Текст задачи" value="{{ task.description }}">
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="description">Статус</label>
+      <input type="checkbox" name="status" class="form-control" {% if task.status == 'complete' %} checked{% endif %}> Выполнено
+    </div>
+
+    <button type="submit" class="btn btn-default">Обновить</button>
+  </form>
+
+
+{% endblock %}
